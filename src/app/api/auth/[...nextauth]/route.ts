@@ -18,9 +18,13 @@ export const authOptions: NextAuthOptions = {
             return token
         },
         async session({ session, token }) {
-            session.user = session.user || {}
-            session.accessToken = token.accessToken
+            if (token?.accessToken) {
+                session.accessToken = token.accessToken
+            }
             return session
+        },
+        async redirect() {
+            return '/dashboard'
         },
     },
 }
