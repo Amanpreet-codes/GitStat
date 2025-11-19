@@ -1,4 +1,5 @@
 import { authOptions } from '../api/auth/[...nextauth]/route'
+import { getGitHubRepos, getGitHubUser, getCommitCounts } from '../lib/github'
 import CommitsStatCard from './components/CommitsStatCard'
 import ProfileCard from './components/ProfileCard'
 import StatsCard from './components/StatsCard'
@@ -7,9 +8,14 @@ import { redirect } from 'next/navigation'
 
 export default async function Dashboard() {
     const session = await getServerSession(authOptions)
-    if (!session) {
-        redirect('/api/auth/signin')
-    }
+    if (!session) redirect('/api/auth/signin')
+
+    const [user, repos, commitStats] = await Promise.all([
+        getGitHubUser(),
+        getGitHubRepos(),
+        getCommitCounts(30, 10),
+    ])
+
     return (
         <div className="min-h-screen p-8 bg-gray-50 dark:bg-gray-900">
             <h1 className="text-2xl font-mono mb-16 text-gray-600 dark:text-white justify-self-center">
@@ -18,10 +24,10 @@ export default async function Dashboard() {
             </h1>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="">
-                    <ProfileCard />
+                    <ProfileCard user={user} />
                 </div>
-                <CommitsStatCard />
-                <StatsCard />
+                <CommitsStatCard commitStats={commitStats} />
+                <StatsCard repos={repos} />
             </div>
         </div>
     )
