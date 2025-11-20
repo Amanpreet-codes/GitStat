@@ -1,8 +1,8 @@
 'use client'
-import { GithubRepo } from '@/app/lib/github'
+import { GitHubRepo } from '@/app/lib/github'
 
 interface StatsCardProps {
-    repos: GithubRepo[]
+    repos: GitHubRepo[]
 }
 
 export default function StatsCard({ repos }: StatsCardProps) {
