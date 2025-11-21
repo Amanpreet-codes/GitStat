@@ -23,9 +23,8 @@ export default async function Dashboard() {
                 Dashboard{' '}
             </h1>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="">
-                    <ProfileCard user={user} />
-                </div>
+                <ProfileCard user={user} />
+                <div className=""></div>
                 <CommitsStatCard commitStats={commitStats} />
                 <StatsCard repos={repos} />
             </div>

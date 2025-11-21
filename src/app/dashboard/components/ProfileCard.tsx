@@ -7,7 +7,7 @@ interface ProfileCardProps {
 
 export default function ProfileCard({ user }: ProfileCardProps) {
     return (
-        <div className="bg-gray-800 p-6 rounded-xl shadow border border-gray-700 ">
+        <div className="bg-gray-800 p-6 rounded-xl shadow border border-gray-700">
             <div className="flex items-center gap-4">
                 <Image
                     src={user.avatar_url}
@@ -37,6 +37,7 @@ export default function ProfileCard({ user }: ProfileCardProps) {
             <a
                 href={user.html_url}
                 target="_blank"
+                rel="noreferrer noopener"
                 className="mt-4 inline-block text-blue-600 hover:underline text-sm"
             >
                 {' '}
