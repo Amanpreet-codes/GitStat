@@ -23,9 +23,6 @@ export const authOptions: NextAuthOptions = {
             }
             return session
         },
-        async redirect() {
-            return '/dashboard'
-        },
     },
 }
 
