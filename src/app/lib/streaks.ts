@@ -53,7 +53,7 @@ export function calculateStreaks(commits: GitHubCommit[]) {
     const yesterday = new Date(today)
     yesterday.setUTCDate(today.getUTCDate() - 1)
 
-    const lastCommitDate = new Date(days[days.length - 1])
+    const lastCommitDate = new Date(days[days.length - 1] + 'T00:00:00Z')
 
     const isToday = lastCommitDate.getTime() === today.getTime()
     const isYesterday = lastCommitDate.getTime() === yesterday.getTime()
