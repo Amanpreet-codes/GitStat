@@ -3,6 +3,7 @@ import { getGitHubRepos, getGitHubUser, getCommitCounts } from '../lib/github'
 import CommitsStatCard from './components/CommitsStatCard'
 import ProfileCard from './components/ProfileCard'
 import StatsCard from './components/StatsCard'
+import StreaksCard from './components/StreaksCard'
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
 
@@ -27,6 +28,7 @@ export default async function Dashboard() {
                 <div className=""></div>
                 <CommitsStatCard commitStats={commitStats} />
                 <StatsCard repos={repos} />
+                <StreaksCard />
             </div>
         </div>
     )

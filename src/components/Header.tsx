@@ -36,7 +36,9 @@ export default function Header({ user }: Props) {
                 )}
                 <button
                     className="px-3 py-1.5 rounded-md bg-red-900/30 text-red-200 transition hover:bg-red-900 shadow-white"
-                    onClick={() => signOut({ callbackUrl: '/' })}
+                    onClick={() =>
+                        signOut({ callbackUrl: 'http://localhost:3000/' })
+                    }
                 >
                     Sign Out
                 </button>
