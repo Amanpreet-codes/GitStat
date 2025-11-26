@@ -4,23 +4,19 @@ import { calculateStreaks } from '@/app/lib/streaks' // your helper
 export default async function StreaksCard() {
     // 1. Fetch repos
     const repos = await getGitHubRepos()
-    const topRepos = repos.slice(0, 8) // limit if needed
+    const topRepos = repos.slice(0, 8)
 
     const allCommits: GitHubCommit[] = []
 
     // 2. Fetch commits for each repo
     for (const repo of topRepos) {
         const [owner] = repo.full_name.split('/')
-
         try {
             const commits = await getRepoCommits(owner, repo.name)
             allCommits.push(...commits)
-        } catch {
-            // safe fallback (repo unreadable / rate-limited)
-        }
+        } catch {}
     }
 
-    // 3. Feed into your streak calculator
     const streakStats = calculateStreaks(allCommits)
 
     return (
