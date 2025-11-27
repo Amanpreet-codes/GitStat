@@ -14,7 +14,12 @@ export default async function StreaksCard() {
         try {
             const commits = await getRepoCommits(owner, repo.name)
             allCommits.push(...commits)
-        } catch {}
+        } catch (error) {
+            console.error(
+                `Failed to fetch commits for ${repo.full_name}:`,
+                error
+            )
+        }
     }
 
     const streakStats = calculateStreaks(allCommits)
