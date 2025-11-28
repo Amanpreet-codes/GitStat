@@ -1,10 +1,5 @@
 import { authOptions } from '../api/auth/[...nextauth]/route'
-import {
-    getGitHubRepos,
-    getGitHubUser,
-    getCommitCounts,
-    GitHubCommit,
-} from '../lib/github'
+import { getGitHubRepos, getGitHubUser, getCommitCounts } from '../lib/github'
 import CommitsStatCard from './components/CommitsStatCard'
 import ProfileCard from './components/ProfileCard'
 import StatsCard from './components/StatsCard'
@@ -25,12 +20,12 @@ export default async function Dashboard() {
         getCommitCounts(30, 10),
     ])
 
-    const commitData: GitHubCommit[] = []
-    for (let i = 0; i < Math.min(7, repos.length); i++) {
-        const r = repos[i]
-        const commits = await getRepoCommits(r.full_name.split('/')[0], r.name)
-        commitData.push(...commits)
-    }
+    const topRepos = repos.slice(0, 7)
+    const commitPromises = topRepos.map((r) =>
+        getRepoCommits(r.full_name.split('/')[0], r.name).catch(() => [])
+    )
+    const commitArrays = await Promise.all(commitPromises)
+    const commitData = commitArrays.flat()
 
     const daily = groupCommitsByDay(commitData)
 
@@ -40,7 +35,7 @@ export default async function Dashboard() {
                 {' '}
                 Dashboard{' '}
             </h1>
-            <div className="flex gap-6">
+            <div className="flex flex-col gap-6">
                 <ProfileCard user={user} />
                 <div className=""></div>
                 <CommitsStatCard commitStats={commitStats} />
