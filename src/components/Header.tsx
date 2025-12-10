@@ -24,7 +24,7 @@ export default function Header({ user }: Props) {
             </div>
             <div className="flex gap-3 items-center">
                 {user && (
-                    <div className="">
+                    <div className=" flex gap-3 items-center">
                         <Image
                             src={user.avatar_url ?? '/placeholder.png'}
                             alt="avatar"
@@ -32,14 +32,14 @@ export default function Header({ user }: Props) {
                             height={32}
                             className="rounded-full"
                         />
+                        <button
+                            className="px-3 py-1.5 rounded-md bg-red-900/30 text-red-200 transition hover:bg-red-900 shadow-white"
+                            onClick={() => signOut({ callbackUrl: '/' })}
+                        >
+                            Sign Out
+                        </button>
                     </div>
                 )}
-                <button
-                    className="px-3 py-1.5 rounded-md bg-red-900/30 text-red-200 transition hover:bg-red-900 shadow-white"
-                    onClick={() => signOut({ callbackUrl: '/' })}
-                >
-                    Sign Out
-                </button>
             </div>
         </header>
     )
