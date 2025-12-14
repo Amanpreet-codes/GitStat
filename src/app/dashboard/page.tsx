@@ -4,6 +4,7 @@ import CommitsStatCard from './components/CommitsStatCard'
 import ProfileCard from './components/ProfileCard'
 import StatsCard from './components/StatsCard'
 import StreaksCard from './components/StreaksCard'
+import TotalRepo from './components/TotalRepo'
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
 import { groupCommitsByDay } from '../lib/chart'
@@ -34,7 +35,7 @@ export default async function Dashboard() {
             <div className="max-w-7xl mx-auto">
                 <header className="mb-6">
                     <h1 className="text-3xl font-semibold text-gray-800 dark:text-white">
-                        Dashboard
+                        Welcome in, {user.name ?? user.login}
                     </h1>
                     <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                         Overview of repositories, commits and streaks
@@ -59,6 +60,10 @@ export default async function Dashboard() {
 
                             <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow">
                                 <StreaksCard />
+                            </div>
+
+                            <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow max-w-50 aspect-square">
+                                <TotalRepo total={repos.length} />
                             </div>
                         </div>
 

@@ -11,7 +11,7 @@ export interface commitstatsCardProps {
 
 export default function CommitsStatCard({ commitStats }: commitstatsCardProps) {
     return (
-        <div className="p-6 bg-gray-800 rounded-xl shadow border border-gray-700">
+        <div className="p-6 bg-gray-800 rounded-xl shadow border border-gray-700 flex flex-col">
             <h2 className="text-lg font-semibold mb-4"> Recent Commits</h2>
 
             <p className="text-sm mb-4">
@@ -21,15 +21,17 @@ export default function CommitsStatCard({ commitStats }: commitstatsCardProps) {
             </p>
 
             <div className="space-y-3 max-h-60 overflow-auto">
-                {commitStats.perRepo.map((r) => (
-                    <div
-                        key={`${r.owner}/${r.repo}`}
-                        className="flex justify-between text-sm"
-                    >
-                        <span className="truncate"> {r.repo} </span>
-                        <span className="font-semibold"> {r.count} </span>
-                    </div>
-                ))}
+                {commitStats.perRepo
+                    .filter((r) => r.count > 0)
+                    .map((r) => (
+                        <div
+                            key={`${r.owner}/${r.repo}`}
+                            className="flex justify-between text-sm"
+                        >
+                            <span className="truncate"> {r.repo} </span>
+                            <span className="font-semibold"> {r.count} </span>
+                        </div>
+                    ))}
             </div>
         </div>
     )
