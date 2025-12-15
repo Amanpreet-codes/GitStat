@@ -1,4 +1,4 @@
-import { authOptions } from '../api/auth/[...nextauth]/route'
+import { authOptions } from '../lib/authOptions'
 import { getGitHubRepos, getGitHubUser, getCommitCounts } from '../lib/github'
 import CommitsStatCard from './components/CommitsStatCard'
 import ProfileCard from './components/ProfileCard'
