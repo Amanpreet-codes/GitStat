@@ -59,7 +59,7 @@ export default function LandingPage() {
                         </Link>
                     </div>
 
-                    <div className="mt-8 flex items-center gap-6">
+                    {/* <div className="mt-8 flex items-center gap-6">
                         <div className="text-sm text-white/60">
                             Trusted by developers
                         </div>
@@ -74,7 +74,7 @@ export default function LandingPage() {
                                 Slack
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div
                         id="features"
