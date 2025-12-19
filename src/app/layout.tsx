@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
-import { ThemeProvider } from 'next-themes'
+import Providers from '@/components/Providers'
 import { getServerSession } from 'next-auth'
 import { authOptions } from './lib/authOptions'
 
@@ -27,15 +27,11 @@ export default async function RootLayout({
 }>) {
     const session = await getServerSession(authOptions)
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning={true}>
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
-                <ThemeProvider
-                    attribute="class"
-                    enableSystem={true}
-                    defaultTheme="system"
-                >
+                <Providers>
                     <Header
                         user={
                             session
@@ -49,7 +45,7 @@ export default async function RootLayout({
                     />
 
                     {children}
-                </ThemeProvider>
+                </Providers>
             </body>
         </html>
     )
