@@ -32,17 +32,26 @@ export default function StatsCard({ repos }: StatsCardProps) {
                     </span>{' '}
                     Total Stars
                 </p>
-                <p className="flex flex-wrap gap-2">
-                    Languages Used:
-                    {languages.map((lang) => (
-                        <span
-                            className="font-semibold text-emerald-600 dark:text-emerald-400"
-                            key={lang}
-                        >
-                            {lang}{' '}
+                {languages.length > 0 ? (
+                    <p className="flex flex-wrap gap-2">
+                        Languages Used:
+                        {languages.map((lang) => (
+                            <span
+                                className="font-semibold text-emerald-600 dark:text-emerald-400"
+                                key={lang}
+                            >
+                                {lang}{' '}
+                            </span>
+                        ))}
+                    </p>
+                ) : (
+                    <p className="flex flex-wrap gap-2">
+                        Languages Used:
+                        <span className="font-semibold text-black/40 dark:text-white/40 ml-2">
+                            None
                         </span>
-                    ))}
-                </p>
+                    </p>
+                )}
             </div>
         </div>
     )

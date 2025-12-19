@@ -2,14 +2,14 @@
 
 import { CommitCountsPerRepo } from '@/app/lib/github'
 
-export interface commitstatsCardProps {
+export interface CommitStatsCardProps {
     commitStats: {
         total: number
         perRepo: CommitCountsPerRepo[]
     }
 }
 
-export default function CommitsStatCard({ commitStats }: commitstatsCardProps) {
+export default function CommitsStatCard({ commitStats }: CommitStatsCardProps) {
     return (
         <div className="p-6 bg-white dark:bg-zinc-900 rounded-xl shadow-xl border border-black/10 dark:border-zinc-800 flex flex-col">
             <h2 className="text-lg font-semibold mb-4 text-black dark:text-white">
