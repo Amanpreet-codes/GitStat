@@ -25,26 +25,26 @@ export default async function StreaksCard() {
     const streakStats = calculateStreaks(allCommits)
 
     return (
-        <div className="p-6 rounded-xl bg-white dark:bg-gray-800 shadow border dark:border-gray-700 max-w-xs">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+        <div className="p-6 rounded-xl bg-white dark:bg-zinc-900 shadow-xl border border-black/10 dark:border-zinc-800 max-w-xs">
+            <h2 className="text-lg font-semibold text-black dark:text-white mb-2">
                 Commit Streak
             </h2>
 
             <div className="flex items-baseline gap-2">
-                <p className="text-4xl font-bold text-indigo-600 dark:text-indigo-400">
+                <p className="text-4xl font-bold text-emerald-600 dark:text-emerald-400">
                     {streakStats.currentStreak}
                 </p>
-                <span className="text-gray-500 dark:text-gray-400">days</span>
+                <span className="text-black/60 dark:text-white/60">days</span>
             </div>
 
-            <p className="text-sm text-gray-500 dark:text-gray-400 mt-3">
+            <p className="text-sm text-black/60 dark:text-white/60 mt-3">
                 Longest streak:{' '}
-                <span className="font-semibold text-gray-700 dark:text-gray-300">
+                <span className="font-semibold text-black dark:text-white">
                     {streakStats.longestStreak} days
                 </span>
             </p>
 
-            <p className="text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-sm text-black/60 dark:text-white/60">
                 Active days logged: {streakStats.totalDays}
             </p>
         </div>

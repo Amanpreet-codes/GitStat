@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
+import { ThemeProvider } from 'next-themes'
 import { getServerSession } from 'next-auth'
 import { authOptions } from './lib/authOptions'
 
@@ -30,18 +31,25 @@ export default async function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
-                <Header
-                    user={
-                        session
-                            ? {
-                                  name: session.user?.name ?? null,
-                                  login: session.user?.email ?? null,
-                                  avatar_url: session.user?.image ?? null,
-                              }
-                            : null
-                    }
-                />
-                {children}
+                <ThemeProvider
+                    attribute="class"
+                    enableSystem={true}
+                    defaultTheme="system"
+                >
+                    <Header
+                        user={
+                            session
+                                ? {
+                                      name: session.user?.name ?? null,
+                                      login: session.user?.email ?? null,
+                                      avatar_url: session.user?.image ?? null,
+                                  }
+                                : null
+                        }
+                    />
+
+                    {children}
+                </ThemeProvider>
             </body>
         </html>
     )

@@ -31,13 +31,13 @@ export default async function Dashboard() {
     const daily = groupCommitsByDay(commitData)
 
     return (
-        <div className="min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
+        <div className="min-h-screen p-6 bg-white dark:bg-black">
             <div className="max-w-7xl mx-auto">
                 <header className="mb-6">
-                    <h1 className="text-3xl font-semibold text-gray-800 dark:text-white">
+                    <h1 className="text-3xl font-semibold text-black dark:text-white">
                         Welcome, {user.name ?? user.login}
                     </h1>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                    <p className="text-sm text-black/60 dark:text-white/60 mt-1">
                         Overview of repositories, commits and streaks
                     </p>
                 </header>
@@ -54,31 +54,31 @@ export default async function Dashboard() {
                     {/* Main content: stats, streaks, charts */}
                     <section className="lg:col-span-3 space-y-6">
                         <div className="flex overflow-auto gap-6">
-                            <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow max-w-[40%] aspect-square">
+                            <div className="bg-white dark:bg-zinc-900 border border-black/10 dark:border-zinc-800 rounded-xl p-4 shadow-xl max-w-[40%] aspect-square">
                                 <StreaksCard />
                             </div>
 
-                            <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow max-w-[40%] aspect-square">
+                            <div className="bg-white dark:bg-zinc-900 border border-black/10 dark:border-zinc-800 rounded-xl p-4 shadow-xl max-w-[40%] aspect-square">
                                 <TotalRepo total={repos.length} />
                             </div>
 
-                            <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow">
+                            <div className="bg-white dark:bg-zinc-900 border border-black/10 dark:border-zinc-800 rounded-xl p-4 shadow-xl">
                                 <CommitsStatCard commitStats={commitStats} />
                             </div>
                         </div>
 
-                        <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow">
-                            <h2 className="text-lg font-medium mb-4 text-gray-700 dark:text-gray-200">
+                        <div className="bg-white dark:bg-zinc-900 border border-black/10 dark:border-zinc-800 rounded-xl p-4 shadow-xl">
+                            <h2 className="text-lg font-medium mb-4 text-black dark:text-white">
                                 Commits Over Time
                             </h2>
                             <CommitsLineChart data={daily} />
                         </div>
 
-                        <div className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow">
-                            <h3 className="text-lg font-medium mb-4 text-gray-700 dark:text-gray-200">
+                        <div className="bg-white dark:bg-zinc-900 border border-black/10 dark:border-zinc-800 rounded-xl p-4 shadow-xl">
+                            <h3 className="text-lg font-medium mb-4 text-black dark:text-white">
                                 Recent Activity
                             </h3>
-                            <div className="text-sm text-gray-500 dark:text-gray-400">
+                            <div className="text-sm text-black/60 dark:text-white/60">
                                 A quick list or table of recent commits can go
                                 here.
                             </div>
