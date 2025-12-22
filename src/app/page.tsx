@@ -38,7 +38,7 @@ export default function LandingPage() {
                             onClick={() =>
                                 signIn('github', { callbackUrl: '/dashboard' })
                             }
-                            className="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-lg bg-emerald-500 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-[1.01] transform transition"
+                            className="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-lg bg-gradient-to-r from-indigo-600 to-emerald-500 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-[1.01] transform transition hover:from-indigo-700 hover:to-emerald-600"
                         >
                             <svg
                                 className="w-5 h-5"
@@ -53,6 +53,8 @@ export default function LandingPage() {
 
                         <Link
                             href="https://github.com/Amanpreet-codes/GitStat"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-white/20 text-white bg-white/5 hover:bg-white/10 transition"
                         >
                             View Repository
@@ -76,10 +78,7 @@ export default function LandingPage() {
                         </div>
                     </div> */}
 
-                    <div
-                        id="features"
-                        className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-md"
-                    >
+                    <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-md">
                         <div className="flex items-start gap-3">
                             <div className="p-2 rounded-md text-xl">📈</div>
                             <div>
