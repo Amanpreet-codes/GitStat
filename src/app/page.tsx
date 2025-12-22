@@ -38,7 +38,7 @@ export default function LandingPage() {
                             onClick={() =>
                                 signIn('github', { callbackUrl: '/dashboard' })
                             }
-                            className="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-lg bg-gradient-to-r from-indigo-600 to-emerald-500 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-[1.01] transform transition"
+                            className="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-lg bg-emerald-500 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-[1.01] transform transition"
                         >
                             <svg
                                 className="w-5 h-5"
@@ -52,10 +52,10 @@ export default function LandingPage() {
                         </button>
 
                         <Link
-                            href="#features"
+                            href="https://github.com/Amanpreet-codes/GitStat"
                             className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-white/20 text-white bg-white/5 hover:bg-white/10 transition"
                         >
-                            Learn more
+                            View Repository
                         </Link>
                     </div>
 
@@ -168,14 +168,14 @@ export default function LandingPage() {
                     </div>
 
                     {/* Floating badges */}
-                    <div className="absolute -top-6 -right-6 w-44 p-3 rounded-lg bg-slate-900/60 border border-white/10 shadow-lg backdrop-blur">
+                    <div className="absolute -top-12 -right-10 w-44 p-3 rounded-lg bg-slate-900/60 border border-white/10 shadow-lg backdrop-blur z-20">
                         <div className="text-xs text-white/60">Next goal</div>
                         <div className="font-semibold text-white">
                             10 commits / week
                         </div>
                     </div>
 
-                    <div className="absolute -bottom-6 left-6 w-36 p-3 rounded-lg bg-slate-900/60 border border-white/10 shadow-lg backdrop-blur">
+                    <div className="absolute -bottom-12 left-8 w-36 p-3 rounded-lg bg-slate-900/60 border border-white/10 shadow-lg backdrop-blur z-20">
                         <div className="text-xs text-white/60">Badge</div>
                         <div className="font-semibold bg-gradient-to-r from-indigo-400 to-emerald-400 bg-clip-text text-transparent">
                             Commit Master

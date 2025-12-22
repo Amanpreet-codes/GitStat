@@ -25,7 +25,7 @@ export default async function StreaksCard() {
     const streakStats = calculateStreaks(allCommits)
 
     return (
-        <div className="p-6 rounded-xl bg-white dark:bg-zinc-900 shadow-xl border border-black/10 dark:border-zinc-800 max-w-xs">
+        <div className="p-6 rounded-xl bg-white dark:bg-zinc-900 shadow-xl border border-black/10 dark:border-zinc-800 w-full h-full">
             <h2 className="text-lg font-semibold text-black dark:text-white mb-2">
                 Commit Streak
             </h2>

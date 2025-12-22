@@ -53,16 +53,15 @@ export default async function Dashboard() {
 
                     {/* Main content: stats, streaks, charts */}
                     <section className="lg:col-span-3 space-y-6">
-                        <div className="flex overflow-auto gap-6">
-                            <div className="bg-white dark:bg-zinc-900 border border-black/10 dark:border-zinc-800 rounded-xl p-4 shadow-xl max-w-[40%] aspect-square">
+                        <div className="flex items-start overflow-auto gap-6">
+                            <div className="bg-white dark:bg-zinc-900 border border-black/10 dark:border-zinc-800 rounded-xl p-4 shadow-xl max-w-[40%] h-52">
                                 <StreaksCard />
                             </div>
-
-                            <div className="bg-white dark:bg-zinc-900 border border-black/10 dark:border-zinc-800 rounded-xl p-4 shadow-xl max-w-[40%] aspect-square">
+                            <div className="bg-white dark:bg-zinc-900 border border-black/10 dark:border-zinc-800 rounded-xl p-4 shadow-xl flex-none w-44 sm:w-48 md:w-52 h-52 flex items-center justify-center">
                                 <TotalRepo total={repos.length} />
                             </div>
 
-                            <div className="bg-white dark:bg-zinc-900 border border-black/10 dark:border-zinc-800 rounded-xl p-4 shadow-xl">
+                            <div className="bg-white dark:bg-zinc-900 border border-black/10 dark:border-zinc-800 rounded-xl p-4 shadow-xl max-w-full flex-1 min-h-0">
                                 <CommitsStatCard commitStats={commitStats} />
                             </div>
                         </div>

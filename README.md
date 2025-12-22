@@ -1,36 +1,125 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Git Stat (DevTracker)
 
-## Getting Started
+A modern GitHub analytics dashboard that visualizes developer activity with commit trends, streak tracking, repository insights, and time-based statistics.
 
-First, run the development server:
+Built using **Next.js App Router**, **TypeScript**, and **Tailwind CSS**, with a focus on clean UX, server-first data fetching, and production-grade architecture.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## ✨ Features
+
+- 🔐 **GitHub OAuth Authentication**
+    - Secure login via GitHub using NextAuth
+    - Separate OAuth apps for development and production
+
+- 📊 **Dashboard Analytics**
+    - Total repositories overview
+    - Commit counts with configurable time windows
+    - Per-repository commit breakdown
+    - Commit streak tracking
+
+- 📈 **Commit Trends**
+    - Interactive line chart for commits over time
+    - Fully responsive and dark-mode aware
+
+- ⏱ **Time-Based Filtering**
+    - View activity for last 1 day, 3 days, week, month, or year
+    - Client-side updates backed by server data
+
+- 🌗 **Light / Dark Theme**
+    - System-aware theme switching
+    - Powered by `next-themes` + Tailwind CSS v4
+
+- ⚡ **Performance & UX**
+    - Server Components for data fetching
+    - Client Components only where required
+    - Loading states and graceful fallbacks
+
+---
+
+## 🧠 Tech Stack
+
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4
+- **Authentication:** NextAuth.js (GitHub Provider)
+- **Charts:** Recharts
+- **Theming:** next-themes
+- **Deployment:** Vercel
+
+---
+
+## 🏗 Architecture Highlights
+
+- Server-side data fetching using async Server Components
+- Clear Server ↔ Client boundaries
+- Client-only Providers for theming and interactivity
+- Deterministic analytics (no unreliable AI summaries)
+- Modular, reusable dashboard components
+
+---
+
+## 📂 Project Structure (Simplified)
+
+app/
+dashboard/
+components/
+CommitsStatCard.tsx
+CommitsLineChart.tsx
+ProfileCard.tsx
+StatsCard.tsx
+StreaksCard.tsx
+lib/
+github.ts
+chart.ts
+components/
+Header.tsx
+Providers.tsx
+
+---
+
+## 🛠 Environment Variables
+
+Create a `.env.local` file:
+
+```env
+GITHUB_ID=your_github_client_id
+GITHUB_SECRET=your_github_client_secret
+
+NEXTAUTH_SECRET=your_nextauth_secret
+NEXTAUTH_URL=http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> ⚠️ Use **separate GitHub OAuth apps and secrets** for development and production.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ▶️ Running Locally
 
-## Learn More
+```bash
+npm install
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Visit: `http://localhost:3000`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Deployment
 
-## Deploy on Vercel
+Deployed on **Vercel** with:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Environment-specific secrets
+- GitHub OAuth production callback URL
+- Optimized server-side rendering
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🧩 Future Improvements
+
+- Weekly activity summaries
+- Language usage breakdown
+- Repository-level drill-down views
+- Exportable activity reports
+
+---
