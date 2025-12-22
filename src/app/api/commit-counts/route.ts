@@ -17,6 +17,6 @@ export async function GET(req: Request) {
         return NextResponse.json(data)
     } catch (err) {
         const message = err instanceof Error ? err.message : String(err)
-        return NextResponse.json({ error: message }, { status: 400 })
+        return NextResponse.json({ error: message }, { status: 500 })
     }
 }
