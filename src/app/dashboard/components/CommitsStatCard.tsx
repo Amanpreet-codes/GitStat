@@ -39,7 +39,17 @@ export default function CommitsStatCard({ commitStats }: CommitStatsCardProps) {
                 )
                 if (!res.ok) throw new Error('Failed to fetch')
                 const data = await res.json()
-                if (mounted && !data.error) setStats(data)
+                if (
+                    mounted &&
+                    data &&
+                    !data.error &&
+                    typeof data.total === 'number' &&
+                    Array.isArray(data.perRepo)
+                ) {
+                    setStats(data)
+                } else if (mounted) {
+                    throw new Error('Invalid response format')
+                }
             } catch (e) {
                 // ignore - keep previous stats
             } finally {
@@ -47,7 +57,6 @@ export default function CommitsStatCard({ commitStats }: CommitStatsCardProps) {
             }
         }
 
-        // don't immediately re-fetch if server already provided the same window
         if (selectedDays) {
             fetchCounts()
         }
