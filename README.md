@@ -9,8 +9,7 @@ Built using **Next.js App Router**, **TypeScript**, and **Tailwind CSS**, with a
 ## ✨ Features
 
 - 🔐 **GitHub OAuth Authentication**
-    - Secure login via GitHub using NextAuth
-    - Separate OAuth apps for development and production
+    - Secure login via GitHub using NextAuth - Separate OAuth apps for development and production
 
 - 📊 **Dashboard Analytics**
     - Total repositories overview
@@ -61,20 +60,38 @@ Built using **Next.js App Router**, **TypeScript**, and **Tailwind CSS**, with a
 
 ## 📂 Project Structure (Simplified)
 
+```text
 app/
-dashboard/
+    globals.css
+    layout.tsx
+    page.tsx
+    api/
+        auth/
+            [...nextauth]/
+                route.ts
+        commit-counts/
+            route.ts
+    dashboard/
+        page.tsx
+        components/
+            CommitsLineChart.tsx
+            CommitsStatCard.tsx
+            ProfileCard.tsx
+            StatsCard.tsx
+            StreaksCard.tsx
+            TotalRepo.tsx
 components/
-CommitsStatCard.tsx
-CommitsLineChart.tsx
-ProfileCard.tsx
-StatsCard.tsx
-StreaksCard.tsx
+    Header.tsx
+    Footer.tsx
+    Providers.tsx
 lib/
-github.ts
-chart.ts
-components/
-Header.tsx
-Providers.tsx
+    authOptions.ts
+    chart.ts
+    github.ts
+    streaks.ts
+types/
+    next-auth.d.ts
+```
 
 ---
 
