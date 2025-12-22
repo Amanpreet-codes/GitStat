@@ -8,19 +8,24 @@ export default async function StreaksCard() {
 
     const allCommits: GitHubCommit[] = []
 
-    // 2. Fetch commits for each repo
-    for (const repo of topRepos) {
+    // 2. Fetch commits for each repo in parallel and handle failures per-repo
+    const commitPromises = topRepos.map((repo) => {
         const [owner] = repo.full_name.split('/')
-        try {
-            const commits = await getRepoCommits(owner, repo.name)
-            allCommits.push(...commits)
-        } catch (error) {
+        return getRepoCommits(owner, repo.name)
+    })
+
+    const settled = await Promise.allSettled(commitPromises)
+    settled.forEach((result, idx) => {
+        const repo = topRepos[idx]
+        if (result.status === 'fulfilled') {
+            allCommits.push(...result.value)
+        } else {
             console.error(
                 `Failed to fetch commits for ${repo.full_name}:`,
-                error
+                result.reason
             )
         }
-    }
+    })
 
     const streakStats = calculateStreaks(allCommits)
 
