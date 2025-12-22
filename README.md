@@ -9,30 +9,30 @@ Built using **Next.js App Router**, **TypeScript**, and **Tailwind CSS**, with a
 ## ✨ Features
 
 - 🔐 **GitHub OAuth Authentication**
-    - Secure login via GitHub using NextAuth - Separate OAuth apps for development and production
+  - Secure login via GitHub using NextAuth - Separate OAuth apps for development and production
 
 - 📊 **Dashboard Analytics**
-    - Total repositories overview
-    - Commit counts with configurable time windows
-    - Per-repository commit breakdown
-    - Commit streak tracking
+  - Total repositories overview
+  - Commit counts with configurable time windows
+  - Per-repository commit breakdown
+  - Commit streak tracking
 
 - 📈 **Commit Trends**
-    - Interactive line chart for commits over time
-    - Fully responsive and dark-mode aware
+  - Interactive line chart for commits over time
+  - Fully responsive and dark-mode aware
 
 - ⏱ **Time-Based Filtering**
-    - View activity for last 1 day, 3 days, week, month, or year
-    - Client-side updates backed by server data
+  - activity for last 1 day, 3 days, week, month, or year
+  - Client-side updates backed by server data
 
 - 🌗 **Light / Dark Theme**
-    - System-aware theme switching
-    - Powered by `next-themes` + Tailwind CSS v4
+  - System-aware theme switching
+  - Powered by `next-themes` + Tailwind CSS v4
 
-- ⚡ **Performance & UX**
-    - Server Components for data fetching
-    - Client Components only where required
-    - Loading states and graceful fallbacks
+- ⚡ **PerViewformance & UX**
+  - Server Components for data fetching
+  - Client Components only where required
+  - Loading states and graceful fallbacks
 
 ---
 
