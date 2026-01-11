@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, useRef } from 'react'
 import { CommitCountsPerRepo } from '@/app/lib/github'
 
 export interface CommitStatsCardProps {
@@ -23,15 +23,23 @@ export default function CommitsStatCard({ commitStats }: CommitStatsCardProps) {
     const [selectedDays, setSelectedDays] = useState<number>(7)
     const [stats, setStats] = useState(commitStats)
     const [loading, setLoading] = useState(false)
+    const cacheRef = useRef<
+        Record<number, CommitStatsCardProps['commitStats']>
+    >({})
 
     useEffect(() => {
-        // Initialize to provided server-side stats
         setStats(commitStats)
     }, [commitStats])
 
     useEffect(() => {
         let mounted = true
         async function fetchCounts() {
+            const cached = cacheRef.current[selectedDays]
+            if (cached) {
+                setStats(cached)
+                setLoading(false)
+                return
+            }
             setLoading(true)
             try {
                 const res = await fetch(
@@ -46,20 +54,18 @@ export default function CommitsStatCard({ commitStats }: CommitStatsCardProps) {
                     typeof data.total === 'number' &&
                     Array.isArray(data.perRepo)
                 ) {
+                    cacheRef.current[selectedDays] = data
                     setStats(data)
                 } else if (mounted) {
                     throw new Error('Invalid response format')
                 }
-            } catch (e) {
+            } catch {
                 // ignore - keep previous stats
             } finally {
                 if (mounted) setLoading(false)
             }
         }
-
-        if (selectedDays) {
-            fetchCounts()
-        }
+        fetchCounts()
 
         return () => {
             mounted = false

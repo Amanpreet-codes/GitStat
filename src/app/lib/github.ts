@@ -21,7 +21,7 @@ export async function githubRequest<T>(
             'X-GitHub-Api-Version': '2022-11-28',
             ...options?.headers,
         },
-        cache: 'no-store',
+        next: { revalidate: 3600 },
     })
     if (
         res.status === 403 &&
