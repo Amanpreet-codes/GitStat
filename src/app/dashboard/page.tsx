@@ -5,11 +5,14 @@ import ProfileCard from './components/ProfileCard'
 import StatsCard from './components/StatsCard'
 import StreaksCard from './components/StreaksCard'
 import TotalRepo from './components/TotalRepo'
+import AchievementsCard from './components/AchievementsCard'
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
 import { groupCommitsByDay } from '../lib/chart'
 import { getRepoCommits } from '../lib/github'
 import CommitsLineChart from './components/CommitsLineChart'
+import { calculateStreaks } from '../lib/streaks'
+import { computeAchievements } from '../lib/achievements'
 
 export default async function Dashboard() {
     const session = await getServerSession(authOptions)
@@ -29,6 +32,15 @@ export default async function Dashboard() {
     const commitData = commitArrays.flat()
 
     const daily = groupCommitsByDay(commitData)
+
+    // Compute achievements
+    const streakStats = calculateStreaks(commitData)
+    const achievements = computeAchievements({
+        totalCommits: commitStats.total,
+        longestStreak: streakStats.longestStreak,
+        repos: repos.length,
+        activeDays: streakStats.totalDays,
+    })
 
     return (
         <div className="min-h-screen p-6 bg-white dark:bg-black">
@@ -72,6 +84,8 @@ export default async function Dashboard() {
                             </h2>
                             <CommitsLineChart data={daily} />
                         </div>
+
+                        <AchievementsCard achievements={achievements} />
 
                         <div className="bg-white dark:bg-zinc-900 border border-black/10 dark:border-zinc-800 rounded-xl p-4 shadow-xl">
                             <h3 className="text-lg font-medium mb-4 text-black dark:text-white">
