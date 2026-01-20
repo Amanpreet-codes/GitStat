@@ -11,6 +11,8 @@ export type Stats = {
     longestStreak: number
     repos: number
     activeDays: number
+    totalStars: number
+    languages: number
 }
 
 type AchievementDef = Omit<Achievement, 'unlocked'> & {
@@ -52,6 +54,34 @@ const ACHIEVEMENT_DEFINITIONS: AchievementDef[] = [
         description: 'Be active on at least 15 days',
         points: 40,
         check: (s) => s.activeDays >= 15,
+    },
+    {
+        id: 'century',
+        title: '💯 Century',
+        description: 'Make 100 commits',
+        points: 75,
+        check: (s) => s.totalCommits >= 100,
+    },
+    {
+        id: 'star-collector',
+        title: '🌟 Star Collector',
+        description: 'Have repos with 10+ total stars',
+        points: 60,
+        check: (s) => s.totalStars >= 10,
+    },
+    {
+        id: 'polyglot',
+        title: '🌍 Polyglot',
+        description: 'Use 5 or more programming languages',
+        points: 50,
+        check: (s) => s.languages >= 5,
+    },
+    {
+        id: '30-day-streak',
+        title: '📅 30-Day Streak',
+        description: 'Maintain a month-long commit streak',
+        points: 100,
+        check: (s) => s.longestStreak >= 30,
     },
 ]
 

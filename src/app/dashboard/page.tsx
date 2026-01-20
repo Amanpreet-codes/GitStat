@@ -35,11 +35,15 @@ export default async function Dashboard() {
 
     // Compute achievements
     const streakStats = calculateStreaks(commitData)
+    const totalStars = repos.reduce((sum, r) => sum + r.stargazers_count, 0)
+    const languages = new Set(repos.map((r) => r.language).filter(Boolean)).size
     const achievements = computeAchievements({
         totalCommits: commitStats.total,
         longestStreak: streakStats.longestStreak,
         repos: repos.length,
         activeDays: streakStats.totalDays,
+        totalStars,
+        languages,
     })
 
     return (
